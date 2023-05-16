@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Registro de Pontos')),
+      appBar: AppBar(title: Text('Registro de Ponto')),
       body: _criarBody(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: EdgeInsets.only(top: 10),
               child: Text(
-                'Carregando seus registros de ponto',
+                'Carregando seus registro de ponto',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -188,7 +188,6 @@ class _HomePageState extends State<HomePage> {
     });
 
   }
-///fim
 
 
   void _abrirNoMapaExterno() {
@@ -212,8 +211,8 @@ class _HomePageState extends State<HomePage> {
     bool servicoHabilotado = await Geolocator.isLocationServiceEnabled();
     if (!servicoHabilotado) {
       await _mostrarMensagemDialog(
-          'Para utilizar esse recurso, você deverá habilitar o serviço de localização '
-              'no dispositivo');
+          'Para utilizar esse recurso, habilite o serviço de localização '
+              'no celular');
       Geolocator.openLocationSettings();
       return false;
     }
@@ -226,14 +225,14 @@ class _HomePageState extends State<HomePage> {
       permissao = await Geolocator.requestPermission();
       if (permissao == LocationPermission.denied) {
         _mostrarMensagem(
-            'Não será possível utilizar o recusro por falta de permissão');
+            'Não foi possível utilizar o recusro devido a falta de permissão');
         return false;
       }
     }
     if (permissao == LocationPermission.deniedForever) {
       await _mostrarMensagemDialog(
-          'Para utilizar esse recurso, você deverá acessar as configurações '
-              'do appe permitir a utilização do serviço de localização');
+          'Para utilizar o recurso, acesse as configurações '
+              'do app e permita a utilização do serviço de localização');
       Geolocator.openAppSettings();
       return false;
     }
@@ -278,3 +277,4 @@ class _HomePageState extends State<HomePage> {
     });
   }
 }
+///fim
